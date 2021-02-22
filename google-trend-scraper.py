@@ -1,13 +1,27 @@
 from pytrends.request import TrendReq
+import sys
 
-# proxy is an array of ip addresses
-def main(proxy=None, keywords=None, timeframe=None):
+def main(proxies=None, keywords=None, timeframe=None):
+    # get command line arguments
+    if len(sys.argv) > 1 and sys.argv[1] == 'no_proxy':
+        proxy = None
+    elif len(sys.argv) == 5:
+        proxies = sys.argv[1].split(',')
+        keywords = sys.argv[2].split(',')
+        timeframe = sys.argv[3] + ' ' + sys.argv[4]
+    else:
+        print('missing arguments!')
+    
+    print(proxies)
+    print(keywords)
+    print(timeframe)
+
     if proxy:
         pytrends = TrendReq(
             hl='en-US', 
             tz=360, 
             timeout=(10,25), 
-            proxies=proxy, 
+            proxies=proxies, 
             retries=3, 
             backoff_factor=0.2, 
             requests_args={'verify':False}
@@ -55,7 +69,9 @@ def main(proxy=None, keywords=None, timeframe=None):
             results.reset_index(drop=True, inplace=True)
             results = results.head(-1)
             results.to_excel('results.xlsx')
+            print(results)
         except:
-            print('Something went wrong')
+            print('something went wrong')
 
-main(proxy=None, keywords=['basketball', 'baseball', 'blockchain'], timeframe='2018-1-1 2018-2-1')
+# sample args
+main(proxies=None, keywords=['basketball', 'baseball', 'blockchain'], timeframe='2018-1-1 2018-2-1')

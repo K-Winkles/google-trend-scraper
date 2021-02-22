@@ -17,17 +17,20 @@ def main(proxies=None, keywords=None, timeframe=None):
     print(proxies)
     print(keywords)
     print(timeframe)
-
+    
     if proxies:
-        pytrends = TrendReq(
-            hl='en-US', 
-            tz=360, 
-            timeout=(10,25), 
-            proxies=proxies, 
-            retries=3, 
-            backoff_factor=0.2, 
-            requests_args={'verify':False}
-        )
+        try:
+            pytrends = TrendReq(
+                hl='en-US', 
+                tz=360, 
+                timeout=(10,25), 
+                proxies=proxies, 
+                retries=3, 
+                backoff_factor=0.2, 
+                requests_args={'verify':False}
+            )
+        except:
+            print('there is something wrong with your proxies')
     else:
         pytrends = TrendReq(
             hl='en-US',

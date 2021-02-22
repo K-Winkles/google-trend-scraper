@@ -1,3 +1,5 @@
+#! /usr/bin/Python
+
 from pytrends.request import TrendReq
 import sys
 
@@ -16,7 +18,7 @@ def main(proxies=None, keywords=None, timeframe=None):
     print(keywords)
     print(timeframe)
 
-    if proxy:
+    if proxies:
         pytrends = TrendReq(
             hl='en-US', 
             tz=360, 

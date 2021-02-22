@@ -4,7 +4,7 @@
 1. Download and install Python 3.9 from here: https://www.python.org/downloads/release/python-392/. Scroll down and download "macOS 64-bit universal2 installer"
 2. Run the installer and follow instructions
 3. Open the folder containing the scraper files
-4. Right click and choose 'open terminal here'
+4. Right click and choose 'services > new terminal at folder'
 5. Type ./install.sh
 6. Hit enter
 7. Wait for the set up to complete

@@ -86,8 +86,8 @@ def main(proxies=None, keywords=None, control_keyword=None, timeframe=None):
                     headers.append(column.name)
                     data.append(column.values)
 
-                headers.append('the office')
-                data.append(trends[0]['the office'].values)
+                headers.append(control_keyword)
+                data.append(trends[0][control_keyword].values)
 
                 for i in range(len(headers)):
                     results[headers[i]] = data[i]
